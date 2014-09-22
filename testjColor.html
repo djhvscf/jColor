@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Pa' Nelsiño</title>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script src="jColor.js" type="text/javascript"></script>
+<script src="color.js" type="text/javascript"></script>
+</head>
+<body>
+<style>
+body
+{
+	font-family: arial, helvetica, freesans, sans-serif;
+	font-size: 100%;
+	color: #333;
+	background-color: #ddd;
+}
+
+h1
+{
+	font-size: 1.5em;
+	font-weight: normal;
+	margin: 0;
+}
+
+.out
+{
+	width: 400px;
+	height: 50px;
+	margin: 20px auto;
+	border: 2px solid #fff;
+	background-color:#777644;
+}
+
+.out1
+{
+	width: 400px;
+	height: 50px;
+	margin: 20px auto;
+	border: 2px solid #fff;
+	background-color:#FF0000;
+}
+
+.out div
+{
+	float: left;
+	width: 4px;
+	height: 50px;
+	margin: 0;
+}
+
+.out1 div
+{
+	float: left;
+	width: 4px;
+	height: 50px;
+	margin: 0;
+}
+
+</style>
+
+<h1>Pa' Nelsiño</h1>
+
+<p>Cambia luminosidad con JS :D</p>
+
+<div id="out" class="out"></div>
+<div id="out1" class="out1"></div>
+<div id="out2" class="out"></div>
+<div id="out3" class="out"></div>
+<div id="out4" class="out"></div>
+<div id="out5" class="out"></div>
+
+<textarea id="code"></textarea>
+<script>
+
+window.onload = function() {
+  
+//Test para la función principal
+	
+	var lum = -0.6;
+	
+	var	color = ["#44776B","#777644","#774C44","#33EDA9","#33ED48","#D8ED33","#ED9C33","#ED4533","#92D92F","#660000","#EE9966","#EE3C3C","#D193AD","#B493D1","#F40000","#F40096","#9A00F4","#5900F4","#0400F4","#0082F4","#663B00","#4F6600","#276600","#006653","#5BFF92","#B5FF5B","#FFF15B","#FFB55B","#FF715B","#EA8E8E","#00D3F4","#00F4EB","#EE3560","#EE35DE","#B690CA","#CA90BF","#a690CA","#90A8CA","#90C2CA","#BBAAAA","#AAAABB","#EAC78E","#E7EA8E","#B3EA8E","#8EEAA9","#8EEAD3","#FFB17E","#FFFA7E","#C9FF7E","#014700","#990000","#FF3265","#32FFF8","#0065CC","#8900BB","#EE5454","#54A6EE","#AA212B","#AA214D","#AA218E","#5821AA","#2156AA","#993A00","#997A00","#10AA13","#B70000","#A8B700","#71B700","#4A3A2B","#2B4935","#E9B8B8","#E9E1B8","#218AAA","#21AA9A","#EDBFFF","#BFC0FF","#BFDBFF","#FFBBEF","#BBD5FF","#BBFFE8","#44EEFF","#BBFFE8","#C6E9B8","#B8E9D7","#54EEB3","#8FEE54","#C7EE54","#EED454","#EDB554","#FF5500","#98AA43","#11BB77","#595A81","#597781","#59817D","#605981","#7F5981","#81596B","#81595B","#664433","#663311","#104D65","#651010","#AACC66","#99EE99","#FF8866","#BBEE66"];
+	
+	var colorOpaco = [];
+	
+	for (var i = 0; i < color.length; i++)
+	{
+		nuevoColor = ColorLuminance(color[i], lum);
+		colorOpaco[i] = "#" + nuevoColor;
+	}
+	
+	console.log(colorOpaco);
+	document.getElementById("code").value = colorOpaco;
+	var a = $('#out').jColor();//.getBackgroundColor();
+	var a1 = $('#out1').jColor();
+	a.saySomething(a.getHSVFromHex(a.getHex()));
+	a1.saySomething(a.getRGBjoin() + "-" + a1.getRGBjoin());
+	//a.setColor(a.setLuminance(0.50));
+};
+
+//Retorna el color hexadecimal más claro (+lum) o más oscuro (-lum) pasando el color hexadecimal original.
+//Factor de luminosidad, ejem: -0.1 = 10% oscuro
+function ColorLuminance(hex, lum) {
+
+	/* Explicación de la RegExp: /[^0-9a-f]/gi
+	 * ^0-9 -> Solo permite números del 0 al 9
+	 * a-f -> Solo permite letras de la "a" a "f"
+	 * g -> Revisa toda la expresión de forma iterativa manteniendo el indice del último caracter compatible con la expresión regular
+	 * i -> No le importa si son mayúsculas o minúsculas, revisa toda la expresión
+	 */
+
+	//Se válida el número hexadecimal y lo que no corresponde con la expresion regular se elimina
+	hex = String(hex).replace(/[^0-9a-f]/gi, '');
+	if (hex.length < 6) {
+		hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+	}
+	lum = lum || 0;
+	
+	//16 es el código para manejar los números en formato hexadecimal
+	//Math.max -> Obtiene el número más grande entre los dos números que recibe como parametros
+	//Math.min -> Obtiene el número más pequeño entre los dos números que recibe como parametros
+	
+	/*
+	var rgb = "#", c, i;
+	for (i = 0; i < 3; i++) {
+		c = parseInt(hex.substr(i*2,2), 16); //obtiene el numero de dos digitos
+		c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+		rgb += ("00"+c).substr(c.length);
+	}
+	*/
+
+	var colooor = [];
+	colooor[0] = hexToR(hex);
+	colooor[1] = hexToG(hex);
+	colooor[2] = hexToB(hex);
+	
+	var hsv = RGBtoHSV(colooor);
+	hsv[1] = hsv[1] *= 0.40;
+	var hsvrgb = HSVtoRGB(hsv);
+	hsvrgb = rgbToHex(hsvrgb[0], hsvrgb[1], hsvrgb[2]);
+	
+	return hsvrgb;
+};
+</script>
+
+</body>
+</html>
