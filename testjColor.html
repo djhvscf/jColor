@@ -5,7 +5,6 @@
 <title>Pa' Nelsiño</title>
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script src="jColor.js" type="text/javascript"></script>
-<script src="color.js" type="text/javascript"></script>
 </head>
 <body>
 <style>
@@ -70,6 +69,7 @@ h1
 <div id="out3" class="out"></div>
 <div id="out4" class="out"></div>
 <div id="out5" class="out"></div>
+<input type="text" id="out6"></input>
 
 <textarea id="code"></textarea>
 <script>
@@ -78,7 +78,7 @@ window.onload = function() {
   
 //Test para la función principal
 	
-	var lum = -0.6;
+/*var lum = -0.6;
 	
 	var	color = ["#44776B","#777644","#774C44","#33EDA9","#33ED48","#D8ED33","#ED9C33","#ED4533","#92D92F","#660000","#EE9966","#EE3C3C","#D193AD","#B493D1","#F40000","#F40096","#9A00F4","#5900F4","#0400F4","#0082F4","#663B00","#4F6600","#276600","#006653","#5BFF92","#B5FF5B","#FFF15B","#FFB55B","#FF715B","#EA8E8E","#00D3F4","#00F4EB","#EE3560","#EE35DE","#B690CA","#CA90BF","#a690CA","#90A8CA","#90C2CA","#BBAAAA","#AAAABB","#EAC78E","#E7EA8E","#B3EA8E","#8EEAA9","#8EEAD3","#FFB17E","#FFFA7E","#C9FF7E","#014700","#990000","#FF3265","#32FFF8","#0065CC","#8900BB","#EE5454","#54A6EE","#AA212B","#AA214D","#AA218E","#5821AA","#2156AA","#993A00","#997A00","#10AA13","#B70000","#A8B700","#71B700","#4A3A2B","#2B4935","#E9B8B8","#E9E1B8","#218AAA","#21AA9A","#EDBFFF","#BFC0FF","#BFDBFF","#FFBBEF","#BBD5FF","#BBFFE8","#44EEFF","#BBFFE8","#C6E9B8","#B8E9D7","#54EEB3","#8FEE54","#C7EE54","#EED454","#EDB554","#FF5500","#98AA43","#11BB77","#595A81","#597781","#59817D","#605981","#7F5981","#81596B","#81595B","#664433","#663311","#104D65","#651010","#AACC66","#99EE99","#FF8866","#BBEE66"];
 	
@@ -91,12 +91,14 @@ window.onload = function() {
 	}
 	
 	console.log(colorOpaco);
-	document.getElementById("code").value = colorOpaco;
+	document.getElementById("code").value = colorOpaco;*/
 	var a = $('#out').jColor();//.getBackgroundColor();
 	var a1 = $('#out1').jColor();
+	var a6 = $('#out6').jColor();
 	a.saySomething(a.getHSVFromHex(a.getHex()));
 	a1.saySomething(a.getRGBjoin() + "-" + a1.getRGBjoin());
-	//a.setColor(a.setLuminance(0.50));
+	a6.saySomething(a6.getHSVFromHex(a6.getHex()));
+	a6.setColor("#eeeeee");
 };
 
 //Retorna el color hexadecimal más claro (+lum) o más oscuro (-lum) pasando el color hexadecimal original.
@@ -130,7 +132,7 @@ function ColorLuminance(hex, lum) {
 	}
 	*/
 
-	var colooor = [];
+	/*var colooor = [];
 	colooor[0] = hexToR(hex);
 	colooor[1] = hexToG(hex);
 	colooor[2] = hexToB(hex);
@@ -140,7 +142,7 @@ function ColorLuminance(hex, lum) {
 	var hsvrgb = HSVtoRGB(hsv);
 	hsvrgb = rgbToHex(hsvrgb[0], hsvrgb[1], hsvrgb[2]);
 	
-	return hsvrgb;
+	return hsvrgb;*/
 };
 </script>
 
