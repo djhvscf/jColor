@@ -1,7 +1,7 @@
-/* @version 2.0 verticalMenu
+/* @version 2.0 jColor
  * @author Dennis Hernández - djhvscf
- * @webSite: http://djhv92.wix.com/dennishernandez
- * Vertical menu with jquery and css
+ * @webSite: 
+ * jColor is a jQuery plugin that allow know and modify the color of DOM elements
  */
 
 ;(function ($) {
@@ -50,7 +50,7 @@
 			getHSVFromRGB : function(RGB) 
 			{
 				if($.isArray(RGB)){
-					var r,g,b,h,s,v;
+					var r,g,b,h,s,v, min, max, delta;
 					r= RGB[0];
 					g= RGB[1];
 					b= RGB[2];
@@ -89,8 +89,7 @@
 			getRGBFromHSV : function(HSV) {
 				
 				if($.isArray(HSV)){
-					var i;
-					var h,s,v,r,g,b;
+					var h,s,v,r,g,b,f,p,q,t,i;
 					h= HSV[0];
 					s= HSV[1];
 					v= HSV[2];
@@ -175,9 +174,9 @@
 			
 			var rgb = "#", c;
 			for (var i = 0; i < 3; i++) {
-				c = parseInt(hexColor.substr(i * 2,2), 16); //obtiene el numero de dos digitos
+				c = parseInt(hexColor.substr(i * 2, 2), 16);
 				c = Math.round(Math.min(Math.max(0, c + (c * luminance)), 255)).toString(16);
-				rgb += ("00"+c).substr(c.length);
+				rgb += ("00" + c).substr(c.length);
 			}
 			
 			return rgb;
