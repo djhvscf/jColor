@@ -1,7 +1,7 @@
-/* @version 2.0 verticalMenu
+/* @version 2.0 jColor
  * @author Dennis Hernández - djhvscf
- * @webSite: http://djhv92.wix.com/dennishernandez
- * Vertical menu with jquery and css
+ * @webSite: 
+ * jColor is a jQuery plugin that allow know and modify the color of DOM elements
  */
 
 ;(function ($) {
